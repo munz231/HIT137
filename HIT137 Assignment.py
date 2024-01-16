@@ -106,6 +106,8 @@ ner_comparison(output_txt)
 
 
 #Question 2
+
+
 #Chapter 1: The Gatekeeper
 
 from PIL import Image
