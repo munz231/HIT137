@@ -1,4 +1,5 @@
 #Question 1
+
 import os
 import pandas as pd
 import spacy
@@ -102,4 +103,87 @@ count_and_store_top_tokens(output_txt, output_csv_token_count)
 # Task 4
 # Make sure to install transformers and torch before running this task
 ner_comparison(output_txt)
+
+
+#Question 2
+#Chapter 1: The Gatekeeper
+
+from PIL import Image
+
+# Load the original image
+original_image = Image.open('Chapter1.png')
+pixels = original_image.load()
+
+# The provided algorithm to generate a number
+import time
+current_time = int(time.time())
+generated_number = (current_time * 100) + 50
+if generated_number % 2 == 0:
+    generated_number += 10
+
+# Modify the pixels in the image
+for i in range(original_image.width):
+    for j in range(original_image.height):
+        r, g, b = pixels[i, j]
+        pixels[i, j] = (r + generated_number, g + generated_number, b + generated_number)
+
+# Save the new image
+original_image.save('chapter1out.png')
+
+# Calculate the sum of red pixel values
+red_pixel_sum = sum([pixels[i, j][0] for i in range(original_image.width) for j in range(original_image.height)])
+
+# Output the sum for the next chapter
+print(red_pixel_sum)
+
+
+#Chapter 2: The Chamber of Strings
+
+s = "5610873770745785410aAwwsktraYmnssfsqp"
+
+# Separate the string into number and letter substrings
+number_substring = ''.join(c for c in s if c.isdigit())
+letter_substring = ''.join(c for c in s if c.isalpha())
+
+# Convert even numbers in the number substring to ASCII code Decimal values
+even_numbers_ascii = [ord(c) for c in number_substring if int(c) % 2 == 0]
+
+# Convert upper-case letters in the letter substring to ASCII code Decimal values
+uppercase_letters_ascii = [ord(c) for c in letter_substring if c.isupper()]
+
+# Output the results
+print(even_numbers_ascii)
+print(uppercase_letters_ascii)
+
+
+#crypto
+
+def decipher_cryptogram(cryptogram, shift):
+    result = ''
+    for char in cryptogram:
+        if char.isalpha():
+            ascii_offset = ord('A') if char.isupper() else ord('a')
+            result += chr((ord(char) - ascii_offset - shift) % 26 + ascii_offset)
+        else:
+            result += char
+    return result
+
+# Example usage
+cryptogram = "URMOGAG QRFREIR 7 R NG 21 CRFG ZAEVYI A ZBAFBR"
+for shift in range(26):
+    deciphered_text = decipher_cryptogram(cryptogram, shift)
+    print(f"Shift {shift}: {deciphered_text}")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
